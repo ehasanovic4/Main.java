@@ -1,0 +1,194 @@
+Index: test/ba/unsa/etf/rpr/SupermarketTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- test/ba/unsa/etf/rpr/SupermarketTest.java	(date 1604435921528)
++++ test/ba/unsa/etf/rpr/SupermarketTest.java	(date 1604435921528)
+@@ -0,0 +1,14 @@
++package ba.unsa.etf.rpr;
++
++import org.junit.jupiter.api.Test;
++
++class SupermarketTest {
++
++    @Test
++    void dodajArtikl() {
++    }
++
++    @Test
++    void izbaciArtiklSaKodom() {
++    }
++}
+\ No newline at end of file
+Index: rpr2019-t1-z4.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module type=\"JAVA_MODULE\" version=\"4\">\r\n  <component name=\"NewModuleRootManager\" inherit-compiler-output=\"true\">\r\n    <exclude-output />\r\n    <content url=\"file://$MODULE_DIR$\">\r\n      <sourceFolder url=\"file://$MODULE_DIR$/src\" isTestSource=\"false\" />\r\n    </content>\r\n    <orderEntry type=\"inheritedJdk\" />\r\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\r\n  </component>\r\n</module>\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- rpr2019-t1-z4.iml	(revision c80de7d1ada16c2f1dfbaf567551a196160a9801)
++++ rpr2019-t1-z4.iml	(date 1604435869595)
+@@ -4,9 +4,25 @@
+     <exclude-output />
+     <content url="file://$MODULE_DIR$">
+       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
++      <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
+     </content>
+     <orderEntry type="inheritedJdk" />
+     <orderEntry type="sourceFolder" forTests="false" />
++    <orderEntry type="module-library" scope="TEST">
++      <library name="JUnit5.4">
++        <CLASSES>
++          <root url="jar://$MAVEN_REPOSITORY$/org/junit/jupiter/junit-jupiter/5.4.2/junit-jupiter-5.4.2.jar!/" />
++          <root url="jar://$MAVEN_REPOSITORY$/org/junit/jupiter/junit-jupiter-api/5.4.2/junit-jupiter-api-5.4.2.jar!/" />
++          <root url="jar://$MAVEN_REPOSITORY$/org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.jar!/" />
++          <root url="jar://$MAVEN_REPOSITORY$/org/opentest4j/opentest4j/1.1.1/opentest4j-1.1.1.jar!/" />
++          <root url="jar://$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-commons/1.4.2/junit-platform-commons-1.4.2.jar!/" />
++          <root url="jar://$MAVEN_REPOSITORY$/org/junit/jupiter/junit-jupiter-params/5.4.2/junit-jupiter-params-5.4.2.jar!/" />
++          <root url="jar://$MAVEN_REPOSITORY$/org/junit/jupiter/junit-jupiter-engine/5.4.2/junit-jupiter-engine-5.4.2.jar!/" />
++          <root url="jar://$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-engine/1.4.2/junit-platform-engine-1.4.2.jar!/" />
++        </CLASSES>
++        <JAVADOC />
++        <SOURCES />
++      </library>
++    </orderEntry>
+   </component>
+-</module>
+-
++</module>
+\ No newline at end of file
+Index: src/ba/unsa/etf/rpr/Supermarket.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ba.unsa.etf.rpr;\r\n\r\npublic class Supermarket {\r\n  \r\n  private max = 1000;\r\n  private Artikl[] artikli;\r\n  private int brArtikala;\r\n  \r\n   public Supermarket(){\r\n    max=1000;\r\n    Artikl[] artikli = new Artikl[max];\r\n    brArtikala=0;    \r\n  }\r\n  \r\n  public boolean dodajArtikl(Artikl a){\r\n    if(brArtikala = max) return false;\r\n    else {\r\n      artikli[brArtikala] = a;\r\n      brArtikala++;\r\n      return true;\r\n    }    \r\n  }\r\n  \r\n  public Artikli[] getArtikl(){\r\n    return artikli;\r\n  }\r\n  \r\n  public Artikl izbaciArtiklSaKodom(String kod){\r\n    Artikl n = null;\r\n    for(int i=0;i<artikli.length;i++){\r\n      if(artikli[i]!=null && artikli[i].getKod().equals(kod)){\r\n        n=artikli[i];\r\n        artikli[i] = null;\r\n        break;\r\n      }\r\n    }\r\n    return n;\r\n  }\r\n  \r\n  \r\n  \r\n  \r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/ba/unsa/etf/rpr/Supermarket.java	(revision c80de7d1ada16c2f1dfbaf567551a196160a9801)
++++ src/ba/unsa/etf/rpr/Supermarket.java	(date 1604318998558)
+@@ -2,7 +2,7 @@
+ 
+ public class Supermarket {
+   
+-  private max = 1000;
++  private int max;
+   private Artikl[] artikli;
+   private int brArtikala;
+   
+@@ -13,7 +13,7 @@
+   }
+   
+   public boolean dodajArtikl(Artikl a){
+-    if(brArtikala = max) return false;
++    if(brArtikala == max) return false;
+     else {
+       artikli[brArtikala] = a;
+       brArtikala++;
+@@ -21,7 +21,7 @@
+     }    
+   }
+   
+-  public Artikli[] getArtikl(){
++  public Artikl[] getArtikl(){
+     return artikli;
+   }
+   
+Index: src/ba/unsa/etf/rpr/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ba.unsa.etf.rpr;\r\n\r\nimport java.util.Scanner;\r\n\r\npublic class Main {\r\n\r\n    private static Korpa korpa = new Korpa();\r\n    private static Supermarket supermarket = new Supermarket();\r\n\r\n    private static void unosArtikalaUMarket(){\r\n        supermarket.dodajArtikl(new Artikl(\"Biciklo\", 1000, \"1\"));\r\n        supermarket.dodajArtikl(new Artikl(\"Biciklo\", 1000, \"2\"));\r\n        supermarket.dodajArtikl(new Artikl(\"Biciklo\", 1000, \"3\"));\r\n        supermarket.dodajArtikl(new Artikl(\"Biciklo\", 1000, \"4\"));\r\n        supermarket.dodajArtikl(new Artikl(\"Biciklo\", 1000, \"5\"));\r\n        supermarket.dodajArtikl(new Artikl(\"Biciklo\", 1000, \"6\"));\r\n        supermarket.dodajArtikl(new Artikl(\"Biciklo\", 1000, \"7\"));\r\n        supermarket.dodajArtikl(new Artikl(\"Biciklo\", 1000, \"8\"));\r\n        supermarket.dodajArtikl(new Artikl(\"Biciklo\", 1000, \"9\"));\r\n        supermarket.dodajArtikl(new Artikl(\"Biciklo\", 1000, \"10\"));\r\n        supermarket.dodajArtikl(new Artikl(\"Biciklo\", 1000, \"11\"));\r\n        supermarket.dodajArtikl(new Artikl(\"Biciklo\", 1000, \"12\"));\r\n        supermarket.dodajArtikl(new Artikl(\"Biciklo\", 1000, \"13\"));\r\n        supermarket.dodajArtikl(new Artikl(\"Biciklo\", 1000, \"14\"));\r\n        supermarket.dodajArtikl(new Artikl(\"Biciklo\", 1000, \"15\"));\r\n        supermarket.dodajArtikl(new Artikl(\"Biciklo\", 1000, \"16\"));\r\n        supermarket.dodajArtikl(new Artikl(\"Biciklo\", 1000, \"17\"));\r\n        supermarket.dodajArtikl(new Artikl(\"Biciklo\", 1000, \"18\"));\r\n        supermarket.dodajArtikl(new Artikl(\"Biciklo\", 1000, \"19\"));\r\n        supermarket.dodajArtikl(new Artikl(\"Biciklo\", 1000, \"20\"));\r\n    }\r\n\r\n    public static void ispisArtikala(Artikl[] artikli){\r\n        for (Artikl a : artikli) {\r\n            if(a != null) System.out.println(\"Naziv: \" + a.getNaziv() + \", Kod: \" + a.getKod() + \", Cijena: \" + a.getCijena() + \" KM\");\r\n        }\r\n    }\r\n\r\n    public static void main(String[] args) {\r\n//      Kreirati program koji modelira supermarket. Kupac ima korpu koja moze sadrzavati maksimalno 50 artikala.\r\n//      Supermarket maksimalno sadrzi 1000 artikala. Artikl je odredjen svojim nazivom, cijenom i kodom.\r\n//      Radi jednostavnosti cemo pretpostaviti da su svi kodovi artikala razliciti. Program treba da radi sljedece:\r\n//      Kupac na pocetku dobija praznu korpu, te u nju moze ubacivati i iz nje izbacivati artikle. Ukoliko kupac zeli\r\n//      ubacivati u korpu potrebno je ispisati sve artikle sa kodovima, te se unosi adekvatan kod za ubacivanje u korpu. Analogno\r\n//      za izbacivanje iz korpe je potrebno ispisati sve produkte koji se trenutno nalaze u korpi sa kodovima. Pri ubacivanju\r\n//      u korpu, stanje u supermarketu se mijenja i artikl vise nije dostupan. Analogno pri izbacivanju iz korpe,\r\n//      artikl se vraca u supermarket. Cilj je implementirati program tako da se transakcije izmedju korpe i supermarketa\r\n//      rjesavaju preko koda. Kupcu je potrebno omoguciti opciju da se prekine program, odnosno da odustane od kupovine,\r\n//      ili da ide na checkout gdje se obracunava potpuni iznos. Placanje se vrsi unosom pri cemu se validira da li je\r\n//      unesena negativna, odnosno dovoljna suma novca.\r\n\r\n        unosArtikalaUMarket();\r\n        for(;;){\r\n            System.out.print(\"0 - odustani\\n1 - dodaj u korpu\\n2 - izbaci iz korpe\\n3 - checkout\\nUnesite opciju: \");\r\n            Scanner scanner = new Scanner(System.in);\r\n            int opcija = scanner.nextInt();\r\n\r\n            if(opcija == 0){\r\n                System.out.println(\"Odustali ste od kupovine.\");\r\n                return;\r\n            }\r\n            else if(opcija == 1){\r\n                System.out.println(\"Dodavanje artikla u korpu\\nArtikli u marketu su: \");\r\n                ispisArtikala(supermarket.getArtikli());\r\n                System.out.println(\"Unesite kod artikla (unesite malo slovo \\\"c\\\" za odustajanje): \");\r\n                String kod = scanner.nextLine();\r\n                kod = scanner.nextLine();\r\n                if(!kod.equals(\"c\")){\r\n                    Artikl a = supermarket.izbaciArtiklSaKodom(kod);\r\n                    if(a != null){\r\n                        if(korpa.dodajArtikl(a)) System.out.println(\"Artikl dodan u korpu.\");\r\n                        else {\r\n                            supermarket.dodajArtikl(a);\r\n                            System.out.println(\"Korpa je puna, artikl nije dodan!\");\r\n                        }\r\n                    }\r\n                }\r\n            }\r\n            else if(opcija == 2){\r\n                System.out.println(\"Izbacivanje artikla iz korpe\\nArtikli u korpi su: \");\r\n                ispisArtikala(korpa.getArtikli());\r\n                System.out.println(\"Unesite kod artikla (unesite malo slovo \\\"c\\\" za odustajanje): \");\r\n                String kod = scanner.nextLine();\r\n                kod = scanner.nextLine();\r\n                if(!kod.equals(\"c\")){\r\n                    Artikl a = korpa.izbaciArtiklSaKodom(kod);\r\n                    if(a != null){\r\n                        supermarket.dodajArtikl(a);\r\n                    }\r\n                }\r\n            }\r\n            else if(opcija == 3){\r\n                int cijena = korpa.dajUkupnuCijenuArtikala(), iznos;\r\n                System.out.println(\"Ukupna cijena je \" + korpa.dajUkupnuCijenuArtikala() + \" KM.\");\r\n                do{\r\n                    System.out.print(\"Unesite ispravan iznos: \");\r\n                    iznos = scanner.nextInt();\r\n                }while(iznos < cijena);\r\n                if(iznos > cijena) System.out.println(\"Povratni iznos: \" + (iznos - cijena));\r\n                System.out.println(\"Placeno, kupovina finalizirana.\");\r\n                return;\r\n            }\r\n        }\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/ba/unsa/etf/rpr/Main.java	(revision c80de7d1ada16c2f1dfbaf567551a196160a9801)
++++ src/ba/unsa/etf/rpr/Main.java	(date 1604318188045)
+@@ -61,7 +61,7 @@
+             }
+             else if(opcija == 1){
+                 System.out.println("Dodavanje artikla u korpu\nArtikli u marketu su: ");
+-                ispisArtikala(supermarket.getArtikli());
++                ispisArtikala(supermarket.getArtikl());
+                 System.out.println("Unesite kod artikla (unesite malo slovo \"c\" za odustajanje): ");
+                 String kod = scanner.nextLine();
+                 kod = scanner.nextLine();
+@@ -78,7 +78,7 @@
+             }
+             else if(opcija == 2){
+                 System.out.println("Izbacivanje artikla iz korpe\nArtikli u korpi su: ");
+-                ispisArtikala(korpa.getArtikli());
++                ispisArtikala(korpa.getArtikl());
+                 System.out.println("Unesite kod artikla (unesite malo slovo \"c\" za odustajanje): ");
+                 String kod = scanner.nextLine();
+                 kod = scanner.nextLine();
+Index: src/ba/unsa/etf/rpr/Artikl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ba.unsa.etf.rpr;\r\n\r\npublic class Artikl {\r\n  prtivate String naziv, kod;\r\n  private int cijena;\r\n  \r\n  public Artikl(String naziv, String kod, int cijena){\r\n    setNaziv(naziv);\r\n    setKod(kod);\r\n    setCijena(cijena);\r\n  }\r\n  \r\n  public String getNaziv(){\r\n    return naziv;\r\n  }\r\n  \r\n  public String getKod(){\r\n    return kod;\r\n  }\r\n  \r\n  public int getCijena(){\r\n    return cijena;\r\n  }\r\n  \r\n  public void setNaziv(String naziv){\r\n    this.naziv=naziv;\r\n  }\r\n  \r\n   public void setKod(String kod){\r\n    this.kod=kod;\r\n  }\r\n  \r\n   public void setCijena(int cijena){\r\n    this.cijena=cijena;\r\n  }\r\n  \r\n  \r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/ba/unsa/etf/rpr/Artikl.java	(revision c80de7d1ada16c2f1dfbaf567551a196160a9801)
++++ src/ba/unsa/etf/rpr/Artikl.java	(date 1604318998579)
+@@ -1,13 +1,13 @@
+ package ba.unsa.etf.rpr;
+ 
+ public class Artikl {
+-  prtivate String naziv, kod;
++  private String naziv, kod;
+   private int cijena;
+   
+-  public Artikl(String naziv, String kod, int cijena){
++  public Artikl(String naziv,int cijena,String kod){
+     setNaziv(naziv);
+-    setKod(kod);
+     setCijena(cijena);
++    setKod(kod);
+   }
+   
+   public String getNaziv(){
+Index: src/ba/unsa/etf/rpr/Korpa.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ba.unsa.etf.rpr;\r\n\r\npublic class Korpa {\r\n  \r\n  private int max=50;\r\n  private Artikl[] artikli;\r\n  private int brArtikala;\r\n  \r\n  public Korpa(){\r\n    max=50;\r\n    Artikl[] artikli = new Artikl[max];\r\n    brArtikala=0;    \r\n  }\r\n  \r\n  public boolean dodajArtikl(Artikl a){\r\n    if(brArtikala = max) return false;\r\n    else {\r\n      artikli[brArtikala] = a;\r\n      brArtikala++;\r\n      return true;\r\n    }    \r\n  }\r\n  \r\n  public Artikli[] getArtikl(){\r\n    return artikli;\r\n  }\r\n  \r\n  public Artikl izbaciArtiklSaKodom(String kod){\r\n    Artikl n = null;\r\n    for(int i=0;i<artikli.length;i++){\r\n      if(artikli[i]!=null && artikli[i].getKod().equals(kod)){\r\n        n=artikli[i];\r\n        artikli[i] = null;\r\n        break;\r\n      }\r\n    }\r\n    return n;\r\n  }\r\n  \r\n  public int dajUkupnuCijenuArtikala(){\r\n    int cijena = 0;\r\n    if(brArtikala == 0) return 0;\r\n    for(int i = 0; i < brArtikala; i++){\r\n      cijena += artikli[i].getCijena();\r\n    }\r\n    return cijena;\r\n  } \r\n  \r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/ba/unsa/etf/rpr/Korpa.java	(revision c80de7d1ada16c2f1dfbaf567551a196160a9801)
++++ src/ba/unsa/etf/rpr/Korpa.java	(date 1604318998568)
+@@ -2,18 +2,19 @@
+ 
+ public class Korpa {
+   
+-  private int max=50;
++
+   private Artikl[] artikli;
+   private int brArtikala;
++  private int max;
+   
+   public Korpa(){
+     max=50;
+-    Artikl[] artikli = new Artikl[max];
+-    brArtikala=0;    
++    brArtikala=0;
++    Artikl[] artikli = new Artikl[max];
+   }
+   
+   public boolean dodajArtikl(Artikl a){
+-    if(brArtikala = max) return false;
++    if(brArtikala == max) return false;
+     else {
+       artikli[brArtikala] = a;
+       brArtikala++;
+@@ -21,8 +22,9 @@
+     }    
+   }
+   
+-  public Artikli[] getArtikl(){
++  public Artikl[] getArtikl(){
+     return artikli;
++
+   }
+   
+   public Artikl izbaciArtiklSaKodom(String kod){
