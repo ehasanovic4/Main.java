@@ -8,7 +8,7 @@ public class Supermarket {
   
    public Supermarket(){
     max=1000;
-    Artikl[] artikli = new Artikl[max];
+    artikli = new Artikl[max];
     brArtikala=0;    
   }
   

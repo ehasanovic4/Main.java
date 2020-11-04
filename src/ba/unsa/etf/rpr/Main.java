@@ -61,7 +61,7 @@ public class Main {
             }
             else if(opcija == 1){
                 System.out.println("Dodavanje artikla u korpu\nArtikli u marketu su: ");
-                ispisArtikala(supermarket.getArtikli());
+                ispisArtikala(supermarket.getArtikl());
                 System.out.println("Unesite kod artikla (unesite malo slovo \"c\" za odustajanje): ");
                 String kod = scanner.nextLine();
                 kod = scanner.nextLine();
@@ -78,7 +78,7 @@ public class Main {
             }
             else if(opcija == 2){
                 System.out.println("Izbacivanje artikla iz korpe\nArtikli u korpi su: ");
-                ispisArtikala(korpa.getArtikli());
+                ispisArtikala(korpa.getArtikl());
                 System.out.println("Unesite kod artikla (unesite malo slovo \"c\" za odustajanje): ");
                 String kod = scanner.nextLine();
                 kod = scanner.nextLine();

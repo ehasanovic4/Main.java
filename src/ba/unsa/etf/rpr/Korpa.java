@@ -10,7 +10,7 @@ public class Korpa {
   public Korpa(){
     max=50;
     brArtikala=0;
-    Artikl[] artikli = new Artikl[max];
+    artikli = new Artikl[max];
   }
   
   public boolean dodajArtikl(Artikl a){
